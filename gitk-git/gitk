@@ -2816,7 +2816,8 @@ proc makewindow {} {
         {mc "Make patch" command mkpatch}
         {mc "Create tag" command mktag}
         {mc "Copy commit reference" command copyreference}
-	{mc "Highlight commit name" command highlightcommitname}
+	#{mc "Highlight commit name" command highlightcommitname}
+	{mc "Search commit occurrence" command searchcommitoccurrence}
         {mc "Write commit to file" command writecommit}
         {mc "Create new branch" command mkbranch}
         {mc "Cherry-pick this commit" command cherrypick}
@@ -9645,6 +9646,20 @@ proc highlightcommitname {} {
 
     clipboard clear
     clipboard append $reference
+}
+
+proc searchcommitoccurrence{} {
+    global rowmenuid autosellen findstring gdttype
+    #set newlist {HEAD} there is at least HEAD
+
+    foreach ref $reflist {
+        # git cherry ref HEAD HEAD^
+	# -> getpatchid
+        # if git cherry returns something
+        # lappend occurrence to newlist
+    }
+    # highlight newlist
+
 }
 
 proc writecommit {} {
